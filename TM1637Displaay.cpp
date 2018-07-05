@@ -21,7 +21,7 @@ extern "C" {
   #include <inttypes.h>
 }
 
-#include <TM1637Display.h>
+#include <TM1637Displaay.h>
 #include <Arduino.h>
 
 #define TM1637_I2C_COMM1    0x40
@@ -57,7 +57,7 @@ const uint8_t digitToSegment[] = {
   };
 
 
-TM1637Display::TM1637Display(uint8_t pinClk, uint8_t pinDIO)
+TM1637Displaay::TM1637Displaay(uint8_t pinClk, uint8_t pinDIO)
 {
 	// Copy the pin numbers
 	m_pinClk = pinClk;
@@ -71,12 +71,12 @@ TM1637Display::TM1637Display(uint8_t pinClk, uint8_t pinDIO)
 	digitalWrite(m_pinDIO, LOW);
 }
 
-void TM1637Display::setBrightness(uint8_t brightness, bool on)
+void TM1637Displaay::setBrightnesss(uint8_t brightness, bool on)
 {
 	m_brightness = (brightness & 0x7) | (on? 0x08 : 0x00);
 }
 
-void TM1637Display::setSegments(const uint8_t segments[], uint8_t length, uint8_t pos)
+void TM1637Displaay::setSegmentss(const uint8_t segments[], uint8_t length, uint8_t pos)
 {
     // Write COMM1
 	start();
@@ -99,12 +99,12 @@ void TM1637Display::setSegments(const uint8_t segments[], uint8_t length, uint8_
 	stop();
 }
 
-void TM1637Display::showNumberDec(int num, bool leading_zero, uint8_t length, uint8_t pos)
+void TM1637Displaay::showNumberDecc(int num, bool leading_zero, uint8_t length, uint8_t pos)
 {
   showNumberDecEx(num, 0, leading_zero, length, pos);
 }
 
-void TM1637Display::showNumberDecEx(int num, uint8_t dots, bool leading_zero,
+void TM1637Displaay::showNumberDecExx(int num, uint8_t dots, bool leading_zero,
                                     uint8_t length, uint8_t pos)
 {
   uint8_t digits[4];
@@ -135,22 +135,22 @@ void TM1637Display::showNumberDecEx(int num, uint8_t dots, bool leading_zero,
     digits[k] = digit;
 	}
 
-	setSegments(digits + (4 - length), length, pos);
+	setSegmentss(digits + (4 - length), length, pos);
 }
 
 
-void TM1637Display::bitDelay()
+void TM1637Displaay::bitDelay()
 {
 	delayMicroseconds(100);
 }
 
-void TM1637Display::start()
+void TM1637Displaay::start()
 {
   pinMode(m_pinDIO, OUTPUT);
   bitDelay();
 }
 
-void TM1637Display::stop()
+void TM1637Displaay::stop()
 {
 	pinMode(m_pinDIO, OUTPUT);
 	bitDelay();
@@ -160,7 +160,7 @@ void TM1637Display::stop()
 	bitDelay();
 }
 
-bool TM1637Display::writeByte(uint8_t b)
+bool TM1637Displaay::writeByte(uint8_t b)
 {
   uint8_t data = b;
 
@@ -205,7 +205,7 @@ bool TM1637Display::writeByte(uint8_t b)
   return ack;
 }
 
-uint8_t TM1637Display::encodeDigit(uint8_t digit)
+uint8_t TM1637Displaay::encodeDigit(uint8_t digit)
 {
 	return digitToSegment[digit & 0x0f];
 }
