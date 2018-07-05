@@ -14,8 +14,8 @@
 //  License along with this library; if not, write to the Free Software
 //  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-#ifndef __TM1637DISPLAY__
-#define __TM1637DISPLAY__
+#ifndef __TM1637DISPLAAY__
+#define __TM1637DISPLAAY__
 
 #include <inttypes.h>
 
@@ -27,7 +27,7 @@
 #define SEG_F   0b00100000
 #define SEG_G   0b01000000
 
-class TM1637Display {
+class TM1637Displaay {
 
 public:
   //! Initialize a TM1637Display object, setting the clock and
@@ -35,7 +35,7 @@ public:
   //!
   //! @param pinClk - The number of the digital pin connected to the clock pin of the module
   //! @param pinDIO - The number of the digital pin connected to the DIO pin of the module
-  TM1637Display(uint8_t pinClk, uint8_t pinDIO);
+  TM1637Displaay(uint8_t pinClk, uint8_t pinDIO);
 
   //! Sets the brightness of the display.
   //!
@@ -44,7 +44,7 @@ public:
   //!
   //! @param brightness A number from 0 (lowes brightness) to 7 (highest brightness)
   //! @param on Turn display on or off
-  void setBrightness(uint8_t brightness, bool on = true);
+  void setBrightnesss(uint8_t brightnesss, bool on = true);
 
   //! Display arbitrary data on the module
   //!
@@ -58,7 +58,7 @@ public:
   //! @param segments An array of size @ref length containing the raw segment values
   //! @param length The number of digits to be modified
   //! @param pos The position from which to start the modification (0 - leftmost, 3 - rightmost)
-  void setSegments(const uint8_t segments[], uint8_t length = 4, uint8_t pos = 0);
+  void setSegmentss(const uint8_t segments[], uint8_t length = 4, uint8_t pos = 0);
 
   //! Displayes a decimal number
   //!
@@ -71,7 +71,7 @@ public:
   //!        fits to the number of digits requested (for example, if two digits are to be displayed,
   //!        the number must be between 0 to 99)
   //! @param pos The position most significant digit (0 - leftmost, 3 - rightmost)
-  void showNumberDec(int num, bool leading_zero = false, uint8_t length = 4, uint8_t pos = 0);
+  void showNumberDecc(int num, bool leading_zero = false, uint8_t length = 4, uint8_t pos = 0);
 
   //! Displayes a decimal number, with dot control
   //!
@@ -96,7 +96,7 @@ public:
   //!        fits to the number of digits requested (for example, if two digits are to be displayed,
   //!        the number must be between 0 to 99)
   //! @param pos The position least significant digit (0 - leftmost, 3 - rightmost)
-  void showNumberDecEx(int num, uint8_t dots = 0, bool leading_zero = false, uint8_t length = 4, uint8_t pos = 0);
+  void showNumberDecExx(int num, uint8_t dots = 0, bool leading_zero = false, uint8_t length = 4, uint8_t pos = 0);
 
   //! Translate a single digit into 7 segment code
   //!
@@ -107,7 +107,7 @@ public:
   //! @param digit A number between 0 to 15
   //! @return A code representing the 7 segment image of the digit (LSB - segment A;
   //!         bit 6 - segment G; bit 7 - always zero)
-  uint8_t encodeDigit(uint8_t digit);
+  uint8_t encodeDigitt(uint8_t digit);
 
 protected:
    void bitDelay();
